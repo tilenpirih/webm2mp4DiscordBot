@@ -28,8 +28,8 @@ def run_discord_bot():
             video_clip = mp.VideoFileClip(webm_filename)
             video_clip.write_videofile(mp4_filename, codec="libx264")
             video_clip.close()
-            await message.delete()
             await message.channel.send(f"<@{author.id}> sent: \n {message.content}",file=discord.File(mp4_filename))
+            await message.delete()
 
             os.remove(webm_filename)
             os.remove(mp4_filename)
